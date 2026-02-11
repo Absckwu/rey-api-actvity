@@ -1,4 +1,4 @@
-const Dish = require('../models/dishModel');
+const Dish = require('../models/dishModels');
 
 
 //1. Get

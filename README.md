@@ -1,4 +1,4 @@
-# RESTful API Activity - Jhonn Carlo
+# RESTful API Activity - Jhonn Carlo Rey
 
 ## Best Practices Implementation
 
@@ -32,4 +32,8 @@ Returning 404 Not Found clearly informs the client that the requested resource d
 *(<img width="428" height="666" alt="Screenshot 2026-01-28 152342" src="https://github.com/user-attachments/assets/952cfb11-3805-4b52-97e6-a9899750c85c" />
 )*
 
+*** Why did I choose to Embed the [Review/Tag/Log] *** 
+- I chose to embed the review/tag/log because it is directly connected to a specific resource and does not need to exist independently. These data usually belong only to one parent record (e.g., a specific dish). Embedding makes it easier and faster to retrieve related information in a single query. It also keeps related data grouped together for better organization.
 
+*** Why did I choose to Reference the [Chef/User/Guest] ***
+- I chose to reference the chef/user/guest because they can exist independently from the main resource. One chef or user can be associated with multiple records, so referencing avoids duplication of data. This approach keeps the database more scalable and maintains data consistency. If the chef or user information changes, it only needs to be updated in one place.

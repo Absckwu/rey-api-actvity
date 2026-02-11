@@ -18,6 +18,18 @@ const dishSchema = new mongoose.Schema({
         type: Boolean,
         default: false,
     },
+    reviews: [
+{
+ user: String,
+ rating: { type: Number, min: 1, max: 5 },
+ comment: String
+}
+ ],
+
+chef: {
+ type: mongoose.Schema.Types.ObjectId,// This is a "Link"
+ ref: 'Chef',
+}
 });
 
 module.exports = mongoose.model('Dish', dishSchema);
