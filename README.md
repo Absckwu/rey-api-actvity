@@ -45,6 +45,16 @@ Returning 404 Not Found clearly informs the client that the requested resource d
 3.[ /] Middleware correctly blocks unauthorized users.
 4.[ /] GitHub Repo link submitted.
 5.[ /] README.md updated with the following answers: README.md Questions:
-6.Authentication vs Authorization: o What is the difference between Authentication and Authorization in our code? o Answer: In our code, Authentication is the process of verifying who a user is ( by checking their email and password to issue a JWT token), while Authorization is the process of verifying what a user is allowed to do (checking if their specific role, like "admin," has permission to access a certain route).
-7.Security (bcrypt): o Why did we use bcryptjs instead of saving passwords as plain text in MongoDB? o Answer: We use bcryptjs because saving passwords as plain text is a major security risk.Bcryptjs protects users by converting their passwords into a cryptographic hash making it more secure.
-8.JWT Structure: o What does the protect middleware do when it receives a JWT from the client? o Answer: the middleware decodes the user’s ID from the payload, fetches that user from the database, and attaches their information to the req.user object so that the next functions in the route know exactly who is making the request.
+README.md Questions:
+1. Authentication vs Authorization:
+o What is the difference between Authentication and Authorization in our
+code?
+o Answer: In our system, Authentication refers to confirming the identity of the user. This happens when the system checks the user’s email and password and then generates a JWT token after successful verification. On the other hand, Authorization determines what actions the authenticated user is allowed to perform. It checks the user’s role, such as “admin,” to see if they have permission to access or use a specific route or feature.
+2. Security (bcrypt):
+o Why did we use bcryptjs instead of saving passwords as plain text in
+MongoDB?
+o Answer: We use bcryptjs because storing passwords as plain text is highly insecure and can expose users’ credentials if the database is compromised. Bcryptjs enhances security by converting passwords into a hashed version, which protects the original password and makes it much harder for attackers to retrieve or misuse it.
+3. JWT Structure:
+o What does the protect middleware do when it receives a JWT from the
+client?
+o Answer:When the protect middleware receives a JWT from the client, it verifies and decodes the token to extract the user’s ID from its payload. The middleware then retrieves the corresponding user information from the database and attaches it to the req.user object. This allows the following route functions to identify who is making the request and apply the appropriate permissions or actions.
