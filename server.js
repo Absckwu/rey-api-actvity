@@ -18,5 +18,5 @@ app.use(process.env.BASE_URI, apiRoutes);
 
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
-    console.log(`Base URI: http://localhost:${PORT}${BASE_URI}}`);
+    console.log(`Base URI: http://localhost:${PORT}${BASE_URI}`);
 });

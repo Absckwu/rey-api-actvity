@@ -1,27 +1,28 @@
 const express = require('express');
 const router = express.Router();
 
+const authRoutes = require('./authRoutes'); // ADD THIS
+
+const chefController = require('../controllers/chefController');
+const { protect, authorize } = require('../middleware/authMiddleware');
+
+router.use('/auth', authRoutes); // ADD THIS
+
+router.get('/auth/chefs', chefController.getAllChefs);
+router.post('/auth/chefs', chefController.createChef);
+
 const {
-    getAlldishes,
+    getAllDishes,
     createDish,
     getDishById,
     updateDish,
     deleteDish,
 } = require('../controllers/dishController');
 
-// 1. Get All Dishes
-router.get('/dishes', getAlldishes);
-
-// 2. Create a New Dish
-router.post('/dishes', createDish);     
-
-// 3. Get a Dish by ID
-router.get('/dishes/:id', getDishById);
-
-// 4. Update a Dish by ID
-router.put('/dishes/:id', updateDish);
-
-// 5. Delete a Dish by ID
-router.delete('/dishes/:id', deleteDish);
+router.get('/', getAllDishes);
+router.post('/', protect, authorize('admin', 'manager'), createDish);
+router.get('/:id', getDishById);
+router.put('/:id', updateDish);
+router.delete('/:id', deleteDish);
 
 module.exports = router;

@@ -37,3 +37,14 @@ Returning 404 Not Found clearly informs the client that the requested resource d
 
 *** Why did I choose to Reference the [Chef/User/Guest] ***
 - I chose to reference the chef/user/guest because they can exist independently from the main resource. One chef or user can be associated with multiple records, so referencing avoids duplication of data. This approach keeps the database more scalable and maintains data consistency. If the chef or user information changes, it only needs to be updated in one place.
+
+***Submission Checklist & README.md Update your README.md with the following questions to prove your understanding:***
+
+1.[ /] Code runs via npm run dev with no errors.
+2.[ /] Registration and Login endpoints are functional.
+3.[ /] Middleware correctly blocks unauthorized users.
+4.[ /] GitHub Repo link submitted.
+5.[ /] README.md updated with the following answers: README.md Questions:
+6.Authentication vs Authorization: o What is the difference between Authentication and Authorization in our code? o Answer: In our code, Authentication is the process of verifying who a user is ( by checking their email and password to issue a JWT token), while Authorization is the process of verifying what a user is allowed to do (checking if their specific role, like "admin," has permission to access a certain route).
+7.Security (bcrypt): o Why did we use bcryptjs instead of saving passwords as plain text in MongoDB? o Answer: We use bcryptjs because saving passwords as plain text is a major security risk.Bcryptjs protects users by converting their passwords into a cryptographic hash making it more secure.
+8.JWT Structure: o What does the protect middleware do when it receives a JWT from the client? o Answer: the middleware decodes the user’s ID from the payload, fetches that user from the database, and attaches their information to the req.user object so that the next functions in the route know exactly who is making the request.
